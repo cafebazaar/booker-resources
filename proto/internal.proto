@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "ir.cafebazaar.booker.proto";
+option java_outer_classname = "BookerProto";
+
+package proto;
+
+import "google/api/annotations.proto";
+import "common.proto";
+import "public.proto";
+
+
+service Resources {
+    rpc GetCategories(CategoriesGetRequest) returns (CategoriesGetReply) {
+        option (google.api.http) = {
+            get: "/resources/categories"
+        };
+    }
+    
+    rpc GetCategoryItems(CategoryItemsGetRequest) returns (CategoryItemsGetReply) {
+        option (google.api.http) = {
+            get: "/resources/categories/{name}/items"
+        };
+    }
+
+    rpc GetItem(ItemGetRequest) returns (ItemGetReply) {
+        option (google.api.http) = {
+            get: "/resources/categories/{categoryName}/items/{itemName}"
+        };
+    }
+
+    rpc PostItem(ItemPostRequest) returns (ItemPostReply) {
+        option (google.api.http) = {
+            post: "/resources/categories/items"
+            body: "*"
+        };
+    }
+}
