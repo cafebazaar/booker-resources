@@ -32,3 +32,6 @@ _testmain.go
 # vim swap files
 *.swp
 *.swo
+
+# local environment
+env.local.sh
