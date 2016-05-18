@@ -2,7 +2,7 @@
 /proto/*.pb.go
 /proto/*.pb.gw.go
 /*.local
-/reservation
+/resources
 
 # Compiled Object files, Static and Dynamic libs (Shared Objects)
 *.o
