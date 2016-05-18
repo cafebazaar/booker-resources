@@ -1,3 +1,9 @@
+/proto/common.proto
+/proto/*.pb.go
+/proto/*.pb.gw.go
+/*.local
+/reservation
+
 # Compiled Object files, Static and Dynamic libs (Shared Objects)
 *.o
 *.a
