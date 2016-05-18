@@ -32,7 +32,7 @@ service Resources {
 
     rpc PostItem(ItemPostRequest) returns (ItemPostReply) {
         option (google.api.http) = {
-            post: "/resources/categories/items"
+            post: "/resources/categories/{categoryName}/items"
             body: "*"
         };
     }

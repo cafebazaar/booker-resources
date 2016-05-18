@@ -6,7 +6,6 @@ option java_outer_classname  = "BookerProto";
 
 package proto;
 
-import "google/protobuf/struct.proto";
 import "google/api/annotations.proto";
 import "common.proto";
 
@@ -17,7 +16,7 @@ message Category {
 
 message Item {
     string name = 1;
-    google.protobuf.Struct spec = 2;
+    map<string, string> spec = 2;
 }
 
 // Requests
