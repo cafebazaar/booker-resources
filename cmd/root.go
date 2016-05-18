@@ -7,16 +7,18 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var addr string
+
+// RootCmd represents the base command when called without any subcommands
 var RootCmd = &cobra.Command{
-	Use:   "booker-resources",
-	Short: "Resource management microservice",
-	Long: `resources manages resources based on categories and is backed by elasticsearch
-	
-	resources serve-json --help
-	resources serve --help`,
-	// Uncomment the following line if your bare application
-	// has an action associated with it:
-	//	Run: func(cmd *cobra.Command, args []string) { },
+	Use:   "resources",
+	Short: "Server for resources microservice",
+	Long: `To get started run the serve subcommand which will start a server
+on localhost:10000:
+    resources serve -a localhost:10000
+Then test ir:
+    curl -k https://localhost:10000/healthz
+`,
 }
 
 // Execute adds all child commands to the root command sets flags appropriately.
@@ -29,4 +31,5 @@ func Execute() {
 }
 
 func init() {
+	RootCmd.PersistentFlags().StringVarP(&addr, "address", "a", "127.0.0.1:8000", "Address to listen on")
 }
