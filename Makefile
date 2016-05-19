@@ -28,9 +28,9 @@ proto/internal.pb.gw.go proto/internal.pb.go proto/public.pb.go proto/common.pb.
 	cd proto; go generate -v .
 
 dependencies: proto/common.proto
-	$(GO) get -u github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway
-	$(GO) get -u github.com/gengo/grpc-gateway/protoc-gen-swagger
-	$(GO) get -u github.com/golang/protobuf/protoc-gen-go
+	$(GO) get github.com/gengo/grpc-gateway/protoc-gen-grpc-gateway
+	$(GO) get github.com/gengo/grpc-gateway/protoc-gen-swagger
+	$(GO) get github.com/golang/protobuf/protoc-gen-go
 	cd proto; go generate -v .
 	$(GO) list -f=$(FORMAT) $(TARGET) | xargs $(GO) install
 
