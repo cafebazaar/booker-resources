@@ -59,47 +59,6 @@ type item struct {
 	Spec     map[string]string
 }
 
-//func getReservation(objectURI string, timestamp uint64) (*reservation, error) {
-//	client, err := elasticClient()
-//	if err != nil {
-//		return nil, fmt.Errorf("Error while getting elastic client: %s", err)
-//	}
-//
-//	exists, err := client.IndexExists(esIndex).Do()
-//	if err != nil {
-//		return nil, err
-//	}
-//	if !exists {
-//		return nil, nil
-//	}
-//
-//	query := elastic.NewBoolQuery().Must(
-//		elastic.NewTermQuery("URI", objectURI),
-//		elastic.NewRangeQuery("startTimestamp").Lt(timestamp),
-//		elastic.NewRangeQuery("endTimestamp").Gt(timestamp),
-//	)
-//	searchResult, err := client.Search().
-//		Index(esIndex).
-//		Query(query).
-//		From(0).Size(1).
-//		Do()
-//	if err != nil {
-//		return nil, fmt.Errorf("Error while querying elastic for reservation at the given time: %s", err)
-//	}
-//
-//	var rsv reservation
-//	for _, item := range searchResult.Each(reflect.TypeOf(rsv)) {
-//		rsv, ok := item.(reservation)
-//		if !ok {
-//			return nil, fmt.Errorf("Failed to convert item to reservation. item=%v", item)
-//		}
-//
-//		return &rsv, nil
-//	}
-//
-//	return nil, nil
-//}
-
 func getItem(categoryName, itemName string) (*item, error) {
 	client, err := elasticClient()
 	if err != nil {
@@ -172,7 +131,7 @@ func createItem(categoryName, itemName string, specMap map[string]string) (*item
 		BodyJson(&it).
 		Do()
 	if err != nil {
-		return nil, fmt.Errorf("Error while creating the reservation: %s", err)
+		return nil, fmt.Errorf("Error while creating the the item entry: %s", err)
 	}
 
 	return &it, nil
